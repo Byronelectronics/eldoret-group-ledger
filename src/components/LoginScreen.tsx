@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Shield, Users, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Shield, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import logo from '@/assets/logo.png';
 
 const LoginScreen: React.FC = () => {
   const { login } = useAuth();
@@ -50,20 +51,18 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-      <div className="w-full max-w-md space-y-8 animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background relative overflow-hidden">
+      {/* Background Logo */}
+      <div 
+        className="absolute inset-0 opacity-5 bg-center bg-no-repeat bg-contain"
+        style={{ backgroundImage: `url(${logo})` }}
+      />
+      
+      <div className="w-full max-w-md space-y-8 animate-fade-in relative z-10">
         {/* Logo and Title */}
         <div className="text-center space-y-4">
-          <div className="mx-auto w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center glow-primary">
-            <Users className="w-10 h-10 text-primary" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">
-              Eldoret Technicians
-            </h1>
-            <p className="text-lg text-primary font-medium">
-              Self Help Group
-            </p>
+          <div className="mx-auto w-24 h-24 rounded-full flex items-center justify-center glow-primary overflow-hidden">
+            <img src={logo} alt="Eldoret Technicians Logo" className="w-full h-full object-cover" />
           </div>
         </div>
 
